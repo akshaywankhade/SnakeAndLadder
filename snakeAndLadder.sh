@@ -34,10 +34,15 @@ do
 			continue
 		;;
 		$IS_LADDER)
-			playerPosition=$(( $playerPosition+$dice ))
+			if [[ $(( $playerPosition+$dice ))>$IS_WIN ]]
+			then
+				continue
+			else
+				playerPosition=$(( $playerPosition+$dice ))
+			fi
 		;;
 		$IS_SNAKE)
-			if (( $(( $playerPosition-$dice ))>=0 ))
+			if [[ $(( $playerPosition-$dice ))>=0 ]]
 			then
 				playerPosition=$(( $playerPosition-$dice ))
 			else
